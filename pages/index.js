@@ -5,6 +5,7 @@ import FirstRow from "@/components/FirstRow";
 import SecondRow from "@/components/SecondRow";
 import AboutUs from "@/components/AboutUs";
 import NewsLetter from "@/components/NewsLetter";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         <SecondRow/>
         <AboutUs/>
         <NewsLetter/>
+        <Footer/>
       </div>
     </main>
   );
