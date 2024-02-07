@@ -11,11 +11,11 @@ export default function Home() {
         </div>        
       </div>
       <div className="w-full flex py-[40px] bg-purple-100">
-        <div className="w-full max-w-[1550px] mx-auto">
-        <div className="w-fit my-auto">
+        <div className="w-full max-w-[1550px] mx-auto flex">
+          <div className="w-fit h-fit mt-auto mb-[40px] mr-[150px] ml-auto">
             <HeaderMessage/>
           </div>   
-          <div className="w-fit ml-auto my-auto">
+          <div className="w-fit my-auto">
             <Form/>
           </div>          
         </div>
