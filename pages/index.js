@@ -16,15 +16,13 @@ export default function Home() {
         </div>        
       </div>
       <div className="w-full flex py-[40px] bg-purple-100">
-        <div className="w-full max-w-[1550px] mx-auto flex">
-          <div className="flex w-fit mx-auto">
-            <div className="w-fit h-fit mt-auto mb-[40px] mr-[150px]">
+        <div className="w-full max-w-[1000px] mx-auto lg:flex">
+            <div className="w-fit h-fit mt-auto mb-[40px] mx-auto lg:mr-auto lg:ml-0">
               <HeaderMessage/>              
             </div>   
-            <div className="w-fit my-auto">
+            <div className="w-fit my-auto mx-auto lg:mx-0">
               <Form/>
-            </div>              
-          </div>        
+            </div>     
         </div>
       </div>
       <div className="w-full">
@@ -37,3 +35,14 @@ export default function Home() {
     </main>
   );
 }
+
+/*
+  Como são as persianas motoriadas?
+  Como elas podem ser controladas?
+  Você oferece somente o serviço de instalação?
+  As persianas tem alguma garantia?
+  Quais são as formas de pagamento?
+  Parcelam em até quantas vezes?
+  Parcelam em até quantas vezes sem juros?
+  
+*/

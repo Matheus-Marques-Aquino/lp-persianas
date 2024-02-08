@@ -11,7 +11,9 @@ export default function NewsLetter() {
                     className="w-full h-full pl-[10px] text-[18px] ring-0 outline-none bg-transparent border-none" 
                     placeholder="Preencha seu melhor e-mail aqui"
                 />
-                <div className="w-full max-w-[200px] h-full ml-auto bg-[#3EC263] rounded-lg hover:opacity-90 cursor-pointer shadow-md"></div>
+                <div className="w-full max-w-[200px] h-full ml-auto bg-[#3EC263] rounded-lg hover:opacity-90 cursor-pointer shadow-xs text-white flex">
+                    <div className="m-auto">Cadastre-se</div>
+                </div>
             </div>
             
         </div>

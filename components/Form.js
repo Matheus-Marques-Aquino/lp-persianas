@@ -1,20 +1,8 @@
-"use client"
-
-import { useRef } from "react";
-
 export default function Form() {
-    const selectRef = useRef(null);
-
-    const toggleDropdown = () => {
-        if (selectRef && selectRef.current) {
-            selectRef.current.focus();
-        }
-    };
-
     return (
-        <div className="bg-white w-full p-[30px] max-w-[425px] shadow-lg rounded-lg">
+        <div className="bg-white w-full p-[20px] max-w-[425px] min-w-[350px] shadow-lg rounded-lg mx-[5px] xs:p-[30px] xs:mx-0">
             <div className="text-[#313131]" >
-                <div className="w-fit mx-auto font-semibold text-[25px] leading-[30px] text-center">
+                <div className="w-fit mx-auto font-semibold text-[23px] leading-[30px] text-center xs:text-[25px]">
                     Solicite um orçamento e ganhe um desconto exclusivo!
                 </div>
                 <div className="w-fit mx-auto font-normal text-[16px] text-center mt-[8px]">
@@ -59,13 +47,8 @@ export default function Form() {
                     <label for="phone" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
                         Tipo de Persiana
                     </label>
-                    <div 
-                        className="border border-gray-300 text-gray-900 rounded-md w-full py-2 px-3"
-                        onClick={toggleDropdown}
-                    >
-                        <select 
-                            ref={selectRef}
-                            className="bg-white text-[16px] focus:ring-0 outline-0 focus:outline-0 focus:border-0 block w-full"
+                    <div className="border border-gray-300 text-gray-900 rounded-md w-full py-2 px-3" >
+                        <select className="bg-white text-[16px] focus:ring-0 outline-0 focus:outline-0 focus:border-0 block w-full"
                         > {/*  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 */}
                             <option value="">Selecione uma opção</option>
                             <option value="persiana-1">Persiana A</option>
@@ -85,7 +68,7 @@ export default function Form() {
                             id="preference-whatsapp"
                             name="preference"
                             className="my-auto"
-                            checked
+                            checked={true}                            
                         />
                         <label
                             for="preference-whatsapp"
@@ -98,6 +81,7 @@ export default function Form() {
                             id="preference-phone"
                             name="preference"
                             className="my-auto ml-[25px]"
+                            checked={false}
                         />
                         <label
                             for="preference-phone"
@@ -110,6 +94,7 @@ export default function Form() {
                             id="preference-email"
                             name="preference"
                             className="my-auto ml-[25px]"
+                            checked={false}
                         />
                         <label
                             for="preference-email"
