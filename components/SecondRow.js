@@ -5,11 +5,11 @@ const CustomCard = ({url, title, content}) => {
     
     return(
         <div className="w-fit text-left max-w-[260px] bg-white shadow-lg rounded-md p-[20px]">
-            <div className="w-[220px] h-[160px] mx-auto bg-[#D9D9D9] rounded-md shadow-sm"></div>
-            <div className="w-fit text-[18px] font-medium text-[#313131] mt-[20px]">
+            <div className="w-[180px] h-[120px] lg:w-[220px] lg:h-[160px] mx-auto bg-[#D9D9D9] rounded-md shadow-sm"></div>
+            <div className="w-fit font-medium text-[#313131] mt-[20px] text-[16px] lg:text-[18px]">
                 Nome do modelo
             </div>
-            <div className="w-fit text-[14px] leading-[20px] font-normal text-[#313131] mx-auto mt-[10px]">
+            <div className="w-fit text-[14px] leading-[20px] font-normal text-[#313131] mx-auto mt-[10px] lg:text-[14px]">
                 is simply dummy text of the printing and typesetting industry.
             </div>
             <div className="w-fit text-[14px] leading-[20px] font-normal text-[#313131] mx-auto mt-[10px]">
@@ -38,7 +38,9 @@ const CustomCard = ({url, title, content}) => {
                     </div>
                 </div>
             </div>
-            <div className="w-full py-[5px] mx-auto bg-[#3EC263] rounded-md text-white text-center font-medium mt-[15px] cursor-pointer hover:opacity-90 shadow-md">Solicitar Cotação</div>
+            <div className="w-full py-[5px] mx-auto bg-[#3EC263] rounded-md text-white text-center font-medium mt-[15px] cursor-pointer hover:opacity-90 shadow-md text-[14px] lg:text-[16px]">
+                Solicitar Cotação
+            </div>
         </div>
     );
 }
@@ -46,11 +48,11 @@ const CustomCard = ({url, title, content}) => {
 export default function SecondRow() { 
 
     return (
-        <div className="bg-green-100 w-full py-[40px] text-[#313131]">
-            <div className="w-fit mx-auto font-medium text-[35px]">
+        <div className="bg-green-100 w-full py-[40px] text-[#313131] ">
+            <div className="w-fit mx-auto font-medium text-[21px] xs:text-[26px] sm:text-[30px] lg:text-[35px]">
                 Confira alguns dos nossos modelos
             </div>
-            <div className="w-fit mx-auto gap-x-[15px] flex pt-[40px]">
+            <div className="w-full mx-auto gap-x-[15px] flex pt-[40px] px-[5px] overflow-hidden">
                 <CustomCard 
                     url="/icons/VacuumCleaner.svg" 
                     title="Higienização" 

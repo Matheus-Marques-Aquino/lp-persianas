@@ -17,10 +17,10 @@ export default function Home() {
       </div>
       <div className="w-full flex py-[40px] bg-purple-100">
         <div className="w-full max-w-[1000px] mx-auto lg:flex">
-            <div className="w-fit h-fit mt-auto mb-[40px] mx-auto lg:mr-auto lg:ml-0">
+            <div className="w-fit h-fit mt-auto mb-[40px] mx-auto px-[8px] lg:mr-auto lg:ml-0 xs:px-0">
               <HeaderMessage/>              
             </div>   
-            <div className="w-fit my-auto mx-auto lg:mx-0">
+            <div className="w-fit my-auto mx-auto px-[8px] lg:mx-0 xs:px-0">
               <Form/>
             </div>     
         </div>
@@ -44,5 +44,6 @@ export default function Home() {
   Quais são as formas de pagamento?
   Parcelam em até quantas vezes?
   Parcelam em até quantas vezes sem juros?
-  
+  Endereço, numero de celular/telefone e email de contato?
+  Redes sociais?
 */

@@ -2,7 +2,7 @@ export default function HeaderMessage() {
 
     return (
         <div className="max-w-[420px] h-fit text-[#313131] text-left mx-[5px] lg:max-w-[490px] xs:mx-0">
-            <div className="max-w-[450px] text-[25px] font-semibold leading-[28px] tracking-[0.025rem] lg:text-[35px] lg:leading-[35px]" >
+            <div className="max-w-[450px] text-[22px] font-semibold leading-[28px] tracking-[0.025rem] lg:text-[35px] lg:leading-[35px]" >
                 São diversas opções de persianas sob medida
             </div>
             <div className="text-[16px] font-normal leading-[20px] mt-[15px]">

@@ -1,6 +1,6 @@
 export default function Form() {
     return (
-        <div className="bg-white w-full p-[20px] max-w-[425px] min-w-[350px] shadow-lg rounded-lg mx-[5px] xs:p-[30px] xs:mx-0">
+        <div className="bg-white w-full p-[20px] max-w-[425px] min-w-[350px] shadow-lg rounded-lg xs:p-[30px]">
             <div className="text-[#313131]" >
                 <div className="w-fit mx-auto font-semibold text-[23px] leading-[30px] text-center xs:text-[25px]">
                     Solicite um orçamento e ganhe um desconto exclusivo!
