@@ -1,4 +1,4 @@
-export default function Form() {
+export default function Form({selectValue, onSelectChange}) {
     return (
         <div className="bg-white w-full p-[20px] max-w-[425px] min-w-[350px] shadow-lg rounded-lg xs:p-[30px]">
             <div className="text-[#313131]" >
@@ -48,12 +48,18 @@ export default function Form() {
                         Tipo de Persiana
                     </label>
                     <div className="border border-gray-300 text-gray-900 rounded-md w-full py-2 px-3" >
-                        <select className="bg-white text-[16px] focus:ring-0 outline-0 focus:outline-0 focus:border-0 block w-full"
+                        <select 
+                            className="bg-white text-[16px] focus:ring-0 outline-0 focus:outline-0 focus:border-0 block w-full"
+                            value={selectValue} 
+                            onChange={(e) => onSelectChange(e.target.value)}
                         > {/*  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 */}
-                            <option value="">Selecione uma opção</option>
-                            <option value="persiana-1">Persiana A</option>
-                            <option value="persiana-2">Persiana B</option>
-                            <option value="persiana-3">Persiana C</option>
+                            <option value="">Selecione um Assunto</option>
+                            <option value="persiana-1">Persiana Rolô Screen</option>
+                            <option value="persiana-2">Persiana Rolô Blackout</option>
+                            <option value="persiana-3">Persiana Rolô Double Vision</option>
+                            <option value="persiana-4">Persiana Horizontal</option>
+                            <option value="persiana-5">Persiana Vertical</option>
+                            <option value="persiana-6">Persiana Romana</option>
                         </select>
                     </div> {/*bg-white text-[16px] focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3 border border-gray-300 text-gray-900 rounded-md w-full*/}
 

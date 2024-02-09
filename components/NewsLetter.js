@@ -1,7 +1,7 @@
 export default function NewsLetter() { 
 
     return (
-        <div className="bg-green-100 w-full py-[40px] text-[#313131]">
+        <div className="shadow-inner-custom-1 w-full pt-[40px] pb-[120px] text-[#313131]">
             <div className="w-fit mx-auto font-medium text-[22px] xs:text-[26px] sm:text-[30px] md:text-[35px]">
                 Concorra a descontos imperdíveis
             </div>
