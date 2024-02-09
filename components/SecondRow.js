@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-
+import 'swiper/css/pagination';
 
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -19,7 +19,7 @@ const CustomCard = ({index, title, content, items, url, buttonCallback}) => {
     
     return(    
         <div className="mx-auto h-full w-fit">
-            <div className="w-full h-full text-left min-w-[280px] max-w-[280px] bg-white shadow-lg rounded-md p-[15px] mb-[20px] border-[1px] border-[#CCCCCC]/[.25] flex flex-col">
+            <div className="w-full h-full text-left min-w-[280px] max-w-[280px] mb-[10px] mb-[10px] bg-white shadow-lg rounded-md p-[15px] mb-[20px] border-[1px] border-[#CCCCCC]/[.25] flex flex-col">
                 <div 
                     className="mt-[5px] h-[200px] w-[240px] mx-auto rounded-md shadow-sm overflow-hidden"
                     onMouseEnter={() => setImageHover(true)}
@@ -181,6 +181,7 @@ export default function SecondRow({updateSelect}) {
                     speed={1000}
                     loop={true}
                     centeredSlides={true}
+                    pagination={true}
                     autoplay={{
                         delay: 11000,
                         disableOnInteraction: false,
