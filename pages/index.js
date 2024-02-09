@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link';
+import { useState, useEffect } from "react";
+
 import Form from "../components/Form";
 import HeaderMessage from "../components/HeaderMessage";
 import FirstRow from "@/components/FirstRow";
@@ -7,10 +9,8 @@ import SecondRow from "@/components/SecondRow";
 import AboutUs from "@/components/AboutUs";
 import NewsLetter from "@/components/NewsLetter";
 import Footer from "@/components/Footer";
-import { useState } from "react";
 
 import { FaWhatsapp } from "react-icons/fa6";
-
 
 export default function Home() {
   const [selectValue, setSelectValue] = useState('');
