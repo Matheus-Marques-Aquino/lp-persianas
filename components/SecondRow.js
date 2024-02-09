@@ -8,6 +8,9 @@ import 'swiper/css/pagination';
 
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
+
 const CustomCard = ({index, title, content, items, url, buttonCallback}) => {
     const [imageHover, setImageHover] = useState(false);
 
@@ -19,7 +22,7 @@ const CustomCard = ({index, title, content, items, url, buttonCallback}) => {
     
     return(    
         <div className="mx-auto h-full w-fit">
-            <div className="w-full h-full text-left min-w-[280px] max-w-[280px] mb-[10px] mb-[10px] bg-white shadow-lg rounded-md p-[15px] mb-[20px] border-[1px] border-[#CCCCCC]/[.25] flex flex-col">
+            <div className="w-full h-full text-left min-w-[280px] max-w-[280px] bg-white shadow-lg rounded-md p-[15px] mb-[20px] border-[1px] border-[#CCCCCC]/[.25] flex flex-col">
                 <div 
                     className="mt-[5px] h-[200px] w-[240px] mx-auto rounded-md shadow-sm overflow-hidden"
                     onMouseEnter={() => setImageHover(true)}
@@ -168,7 +171,7 @@ export default function SecondRow({updateSelect}) {
                 Confira alguns dos nossos modelos
             </div>
             <div         
-                className="w-full max-w-[1600px] pb-[20px] mx-auto gap-x-[15px] flex pt-[40px] px-[5px] overflow-hidden relative cursor-grab"
+                className="w-full max-w-[1600px] pb-[20px] mx-auto gap-x-[15px] flex pt-[40px] px-[5px] overflow-hidden relative cursor-grab relative"
                 onMouseEnter={handleSlideBounce}
                 onTouchStart={handleSlideBounce}
             >
@@ -218,6 +221,18 @@ export default function SecondRow({updateSelect}) {
                         </SwiperSlide>)
                     })}
                 </Swiper>
+                <div 
+                    className="w-[30px] h-[30px] bg-[#000000] rounded-full rounded-full flex opacity-60 absolute left-[5px] top-0 bottom-0 my-auto z-[200] cursor-pointer"
+                    onClick={() => {swiperRef.current.swiper.slidePrev()}}
+                >
+                    <FaAngleLeft className="m-auto text-white w-[16px] h-[16px] pr-[2px] opacity-100 cursor-pointer"/>
+                </div>
+                <div 
+                    className="w-[30px] h-[30px] bg-[#000000] rounded-full rounded-full flex opacity-60 absolute right-[5px] top-0 bottom-0 my-auto z-[200] cursor-pointer"
+                    onClick={() => {swiperRef.current.swiper.slideNext()}}
+                >
+                    <FaAngleRight className="m-auto text-white w-[16px] h-[16px] pl-[2px] opacity-100 cursor-pointer"/>
+                </div>
             </div>
         </div>
     );
