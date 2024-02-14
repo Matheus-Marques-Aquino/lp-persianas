@@ -11,6 +11,7 @@ import NewsLetter from "@/components/NewsLetter";
 import Footer from "@/components/Footer";
 
 import { FaWhatsapp } from "react-icons/fa6";
+import { SERVER_DIRECTORY } from "next/dist/shared/lib/constants";
 
 export default function Home() {
   const [selectValue, setSelectValue] = useState('');

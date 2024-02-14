@@ -113,7 +113,8 @@ export default function SecondRow({updateSelect}) {
                 "3% para equilibrar luz e privacidade.", 
                 "5% para maximizar a entrada de luz."
             ],
-            items: []
+            items: [],
+            value: 'rolo-screen'
         },
         {
             url: ["/imgs/persianas/rolo-blackout-1.png", "/imgs/persianas/rolo-blackout-2.png"],
@@ -122,7 +123,8 @@ export default function SecondRow({updateSelect}) {
                 "Solução sofisticada para privacidade absoluta e bloqueio completo da luz, criando o ambiente perfeito para relaxamento e proteção visual.",
                 "Ideal para quartos, salas de mídia e espaços que demandam escuridão total."
             ],
-            items: []
+            items: [],
+            value: 'rolo-blackout'
         },
         {
             url: ["/imgs/persianas/double-vision-2.png", "/imgs/persianas/double-vision-1.png"],
@@ -131,7 +133,8 @@ export default function SecondRow({updateSelect}) {
                 "Design inovador e funcional que permite ajuste dinâmico da luz e visibilidade, com faixas alternadas translúcidas e opacas deslizando para criar efeitos de abertura personalizados.",
                 "Perfeita para ambientes residenciais e comerciais, oferece um equilíbrio estético entre funcionalidade e design."
             ],
-            items: []
+            items: [],
+            value: 'rolo-double-vision'
         },
         {
             url: ["/imgs/persianas/horizontal-1.png", "/imgs/persianas/horizontal-2.png"],
@@ -140,7 +143,8 @@ export default function SecondRow({updateSelect}) {
                 "Combinação de funcionalidade e estilo, com lâminas ajustáveis para controle de luz e privacidade, adaptando-se a qualquer ambiente.",
                 "Ideal para quem busca praticidade, durabilidade e uma estética refinada na decoração de interiores."
             ],
-            items: []
+            items: [],
+            value: 'horizontal'
         },
         {
             url: ["/imgs/persianas/vertical-1.png", "/imgs/persianas/vertical-2.png"],
@@ -149,7 +153,8 @@ export default function SecondRow({updateSelect}) {
                 "Alternativa versátil para controle ajustável de luz e privacidade, com lâminas verticais que se movem suavemente.",
                 "Ideal para escritórios, salas de estar e espaços amplos, proporcionando uma combinação de praticidade, funcionalidade e sofisticação."
             ],
-            items: []
+            items: [],
+            value: 'vertical'
         },
         {
             url: ["/imgs/persianas/romana-1.png", "/imgs/persianas/romana-2.png"],
@@ -158,7 +163,8 @@ export default function SecondRow({updateSelect}) {
                 "Combina beleza e praticidade em um design que traz tecidos que se dobram de forma elegante, criando um visual charmoso e aconchegante.",
                 "Seja em casa ou no trabalho, oferece um controle de luz e privacidade com estilo mais despojado."
             ],
-            items: []
+            items: [],
+            value: 'romana'
         }
     ];                      
 
@@ -216,7 +222,7 @@ export default function SecondRow({updateSelect}) {
                                 title={card.title}
                                 content={card.content}
                                 items={[...card.items]}
-                                buttonCallback={(index) => { updateSelect('persiana-' + (index + 1) ) } }
+                                buttonCallback={(index) => { updateSelect(card.value) } }
                             />
                         </SwiperSlide>)
                     })}
