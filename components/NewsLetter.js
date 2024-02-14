@@ -6,7 +6,7 @@ export default function NewsLetter() {
                 Concorra a descontos imperdíveis
             </div>
             
-            <div className="mx-auto w-full h-[45px] rounded-lg bg-[#D9D9D9] p-[6px] flex mt-[25px] shadow-sm max-w-[330px] xs:max-w-[400px] sm:max-w-[600px]">
+            <div className="mx-auto w-full h-[45px] rounded-lg bg-[#EEE] border-[1px] border-[#E5E5E5] p-[3px] flex mt-[25px] shadow-sm max-w-[330px] xs:max-w-[400px] sm:max-w-[600px]">
                 <input 
                     className="w-full h-full pl-[10px] text-[14px] xs:text-[16px] lg:text-[18px] ring-0 outline-none bg-transparent border-none" 
                     placeholder="Preencha seu melhor e-mail aqui"

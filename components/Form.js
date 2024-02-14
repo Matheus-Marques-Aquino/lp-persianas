@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+
+const patterns = {
+    phone: /^\([0-9]{2}\)\s[0-9]{4,5}-[0-9]{4}$/,
+    email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+}
 
 export default function Form({selectValue, onSelectChange}) {
-    const [errors, setErrors] = useState(['name', 'phone', 'email']);
+    const [errors, setErrors] = useState([]);
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -10,41 +16,154 @@ export default function Form({selectValue, onSelectChange}) {
         contact: 'whatsapp'
     });
 
-    const validateForm = () => {
+    const phoneMask = (value) => {
+        var mask = /(\d{2})(\d{5})(\d{4})/;
+        var rawValue = value.replace(/\D/g, '');
 
-    } 
-
-    const inputHandler = (e) => {
-        if (!e || !e.target ) {
-            return;
+        if (rawValue.length > 0 && rawValue.length < 2) {
+            mask = /(\d{1,2})/;
+            return rawValue.replace(mask, '($1');
         }
 
+        if (rawValue.length > 2 && rawValue.length < 7) {
+            mask = /(\d{2})(\d{1,5})/;
+            return rawValue.replace(mask, '($1) $2');
+        }
+
+        if (rawValue.length > 6 && rawValue.length < 11) {
+            mask = /(\d{2})(\d{4})(\d{1,4})/;
+            return rawValue.replace(mask, '($1) $2-$3');
+        }
+
+        if (rawValue.length > 11) {
+            rawValue = rawValue.slice(0, 11);
+        }
+
+        return rawValue.replace(mask, '($1) $2-$3');                
+    }
+
+    const validateForm = () => {
         var {
-            name, 
-            value
-        } = e.target;
+            name,
+            email,
+            phone,
+            select,
+            contact
+        } = form;
+
+        name = name.toString().trim();
+        email = email.toString().trim();
+        
+        var errorList = [];
+
+        if (!patterns.email.test(email) && contact == 'email') {            
+            errorList.push('email');
+        }
+
+        if (!patterns.phone.test(phone) && ['phone', 'whatsapp'].includes(contact)) {
+            errorList.push('phone');
+        }
+
+        if (!select || select == '' ) {
+            errorList.push('select');
+        }
+
+        if (name.length < 3) {
+            errorList.push('name');
+        }
+
+        if (errorList.length > 0) {
+            setErrors([ ...errorList ]);
+
+            console.log('Failed');
+            return false;
+        }
+
+        console.log('Ok');
+        return true;
+    } 
+
+    const sendForm = () => {
+        var valid = validateForm();
+        if (!valid) { return; }
+
+        var url = "/api/form";
+
+        var headers = {
+            'Content-Type': 'application/json',
+            'accept': 'application/json'
+        }
+
+        var data = {
+            name: form.name,
+            email: form.email,
+            phone: form.phone,
+            select: form.select,
+            contact: form.contact
+        };
+
+        axios.post(url, data, { headers: headers })
+            .then((response) => {
+                console.log('Success:', response);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    const inputHandler = (e) => {
+        if (!e || !e.target ) { return; }
+
+        var { name, value } = e.target;
 
         if (name.includes('preference')) {
             name = name.replace('preference-', '');
             
             if (value == 'on') {
-                setForm({ ...form, contact: name })
+                setForm({ 
+                    ...form, 
+                    contact: name 
+                });
             }
 
             return;
         }
 
         if (name.includes('select')) {
-            setForm({ ...form, select: value });
+            if (errors.includes('select')) {
+                let errorList = errors.filter((e)=>{ return e != 'select'; }); 
+                setErrors([ ...errorList ]);
+            }
+
+            setForm({ 
+                ...form, 
+                select: value 
+            });
+
             return;
-        } 
+        }
         
-        setForm({ ...form, [name]: value });        
+        if (errors.includes(name)) {
+            let errorList = errors.filter((e)=>{ return e != name; }); 
+            setErrors([ ...errorList ]);
+        }
+
+        if (name == 'phone') {
+            value = phoneMask(value);
+        }
+        
+        setForm({ 
+            ...form, 
+            [name]: value 
+        });        
     }
 
     useEffect(() => {
         if (selectValue != form.select) {
-            setForm({ ...form, select: selectValue });
+            setForm({ 
+                ...form, 
+                select: selectValue 
+            });
         }
     }, [selectValue]);
 
@@ -71,8 +190,8 @@ export default function Form({selectValue, onSelectChange}) {
                         name="name"
                         value={form.name}
                         onChange={(e) => { inputHandler(e); }}
-                        className={`bg-white text-[16px] border border-gray-300 text-gray-900 rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3
-                            ${errors.includes('name') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : ''}`}
+                        className={`bg-white text-[16px] border rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3
+                            ${errors.includes('name') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : 'border-gray-300 text-gray-900'}`}
                         placeholder="Nome"
                     />
                 </div>
@@ -86,8 +205,8 @@ export default function Form({selectValue, onSelectChange}) {
                         name="email"
                         value={form.email}
                         onChange={(e) => { inputHandler(e); }}
-                        className={`bg-white text-[16px] border border-gray-300 text-gray-900 rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3
-                            ${errors.includes('email') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : ''}`}
+                        className={`bg-white text-[16px] border rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3
+                            ${errors.includes('email') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : 'border-gray-300 text-gray-900'}`}
                         placeholder="E-mail"
                     />
                 </div>
@@ -101,8 +220,8 @@ export default function Form({selectValue, onSelectChange}) {
                         name="phone"
                         value={form.phone}
                         onChange={(e) => { inputHandler(e); }}
-                        className={`bg-white text-[16px] border border-gray-300 text-gray-900 rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3 
-                            ${errors.includes('phone') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : ''}`}
+                        className={`bg-white text-[16px] border rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3 
+                            ${errors.includes('phone') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : 'border-gray-300 text-gray-900'}`}
                         placeholder="Telefone"
                     />
                 </div>
@@ -114,7 +233,8 @@ export default function Form({selectValue, onSelectChange}) {
                         ${errors.includes('select') ? 'border-red-500 text-[#e53e3e] placeholder-red-600' : ''}`} >
                         <select 
                             name="select"
-                            className="bg-white text-[16px] focus:ring-0 outline-0 focus:outline-0 focus:border-0 block w-full"
+                            className={`bg-white text-[16px] focus:ring-0 outline-0 focus:outline-0 focus:border-0 block w-full
+                                ${errors.includes('select') ? 'text-[#e53e3e] placeholder-red-600' : ''}`}                            
                             value={selectValue} 
                             onChange={(e) => {
                                 inputHandler(e);
@@ -181,8 +301,16 @@ export default function Form({selectValue, onSelectChange}) {
                         </label>
                     </div>
                 </div>
+                <div className={`w-fit mx-auto mt-[15px] text-[16px] font-normal text-green-600 leading-[20px]
+                    hidden
+                `}>
+                    Formulário enviado com sucesso!<br/>Em breve entraremos em contato.
+                </div>
             </div>
-            <div className="w-full text-white text-center py-[8px] mt-[25px] cursor-pointer bg-[#3EC263] rounded-md hover:opacity-85 transition ease-in-out duration-300">
+            <div 
+                className="w-full text-white text-center py-[8px] mt-[25px] cursor-pointer bg-[#3EC263] rounded-md hover:opacity-85 transition ease-in-out duration-300"
+                onClick={() => { sendForm(); }}
+            >
                 Enviar
             </div>
         </div>

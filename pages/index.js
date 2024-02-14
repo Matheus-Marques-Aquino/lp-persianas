@@ -68,7 +68,7 @@ export default function Home() {
         <Footer/>
       </div>
       <Link href="https://api.whatsapp.com/send/?phone=5511972482006" rel="noopener noreferrer" target="_blank">
-        <div className="fixed bottom-[25px] right-[25px] z-50 sm:w-[75px] sm:h-[75px] w-[60px] h-[60px] rounded-full bg-[#25D366] flex cursor-pointer">
+        <div className="fixed bottom-[25px] right-[25px] z-50 sm:w-[75px] sm:h-[75px] w-[60px] h-[60px] rounded-full bg-[#25D366] flex cursor-pointer hover:opacity-80 transition ease-in-out duration-500">
           <FaWhatsapp className="w-[40px] h-[40px] sm:w-[54px] sm:h-[54px] m-auto text-white"/>
         </div>        
       </Link>
