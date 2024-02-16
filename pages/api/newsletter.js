@@ -3,9 +3,7 @@ const fs = require('fs');
 const { google } = require('googleapis');
 const { DateTime } = require('luxon');
 
-
 const patterns = {
-    phone: /^\([0-9]{2}\)\s[0-9]{4,5}-[0-9]{4}$/,
     email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 }
 
@@ -24,28 +22,10 @@ export default async function handler(req, res) {
     const body = { ...req.body };
     var errors = [];
 
-    var {
-        name,
-        email,
-        phone,
-        select,
-        contact
-    } = body;
+    var { email } = body;
 
     if (!patterns.email.test(email) && contact == 'email') {            
         errors.push('email');
-    }
-
-    if (!patterns.phone.test(phone) && ['phone', 'whatsapp'].includes(contact)) {
-        errors.push('phone');
-    }
-
-    if (!select || select == '' ) {
-        errors.push('select');
-    }
-
-    if (name.length < 3) {
-        errors.push('name');
     }
 
     if (errors.length > 0) {
@@ -55,63 +35,15 @@ export default async function handler(req, res) {
 
     let timestamp = DateTime.now()
         .setZone('America/Sao_Paulo')
-        .toFormat('dd/MM/yyyy - HH:mm');
-
-    switch (select) {
-        case 'rolo-screen':
-            select = 'Persiana Rolô Screen';
-            break;
-    
-        case 'rolo-blackout':
-            select = 'Persiana Rolô Blackout';
-            break;
-
-        case 'rolo-double-vision':
-            select = 'Persiana Rolô Double Vision';
-            break;
-        
-        case 'horizontal':
-            select = 'Persiana Horizontal';
-            break;
-        
-        case 'vertical':
-            select = 'Persiana Vertical';
-            break;
-        
-        case 'romana':
-            select = 'Persiana Romana';
-            break;
-        
-        default:
-            select = 'Outra'
-            break;
-    }
-
-    switch (contact) {
-        case 'email':
-            contact = 'E-mail';
-            break;
-    
-        case 'phone':
-            contact = 'Telefone';
-            break;
-
-        case 'whatsapp':
-            contact = 'WhatsApp';
-            break;
-        
-        default:
-            contact = 'Outro'
-            break;
-    }
+        .toFormat('dd/MM/yyyy HH:mm');
 
     try {    
         const auth = await authenticate();
         const sheets = google.sheets({ version: 'v4', auth });
 
         const spreadsheetId = '1enUVWNn7bY9Cv9fAY8lGDlsrlK8VVpHSPVsMUUB4dAE';
-        const range = 'Folha_1!A:F';
-        const values = [[name, email, phone, select, contact, timestamp]];
+        const range = 'Folha_2!A:B';
+        const values = [[email, timestamp]];
 
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId,

@@ -9,6 +9,7 @@ const patterns = {
 export default function Form({selectValue, onSelectChange}) {
     const [errors, setErrors] = useState([]);
     const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [form, setForm] = useState({
         name: '',
@@ -87,7 +88,9 @@ export default function Form({selectValue, onSelectChange}) {
 
     const sendForm = () => {
         var valid = validateForm();
-        if (!valid) { return; }
+        if (!valid || loading) { return; }
+
+        setLoading(true);
 
         var url = "/api/form";
 
@@ -108,6 +111,7 @@ export default function Form({selectValue, onSelectChange}) {
             .then((response) => {
                 console.log('Success:', response);
                 setSuccess(true);
+                setLoading(false);
 
                 setTimeout(() => {
                     setSuccess(false);
@@ -115,6 +119,8 @@ export default function Form({selectValue, onSelectChange}) {
             })
             .catch((error) => {
                 console.error('Error:', error);
+                setSuccess(false);
+                setLoading(false);
             });
     }
 
@@ -188,7 +194,7 @@ export default function Form({selectValue, onSelectChange}) {
             </div>
             <div className="w-full gap-y-[10px] mt-[30px]">
                 <div>
-                    <label for="name" className="block mb-[3px] text-sm font-medium text-gray-900 hidden"> {/* dark:text-gray-300 */}
+                    <label htmlFor="name" className="block mb-[3px] text-sm font-medium text-gray-900 hidden"> {/* dark:text-gray-300 */}
                         Nome
                     </label>
                     <input
@@ -203,7 +209,7 @@ export default function Form({selectValue, onSelectChange}) {
                     />
                 </div>
                 <div className="mt-[20px]">
-                    <label for="email" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
+                    <label htmlFor="email" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
                         E-mail
                     </label>
                     <input
@@ -218,7 +224,7 @@ export default function Form({selectValue, onSelectChange}) {
                     />
                 </div>
                 <div className="mt-[20px]">
-                    <label for="phone" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
+                    <label htmlFor="phone" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
                         Telefone
                     </label>
                     <input
@@ -233,7 +239,7 @@ export default function Form({selectValue, onSelectChange}) {
                     />
                 </div>
                 <div className="mt-[20px]">
-                    <label for="select" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
+                    <label htmlFor="select" className="block mb-[3px] text-sm font-medium text-gray-900 hidden">
                         Tipo de Persiana
                     </label>
                     <div className={`border border-gray-300 text-gray-900 rounded-md w-full py-2 px-3
@@ -273,7 +279,7 @@ export default function Form({selectValue, onSelectChange}) {
                             onChange={(e) => { inputHandler(e); }}                           
                         />
                         <label
-                            for="preference-whatsapp"
+                            htmlFor="preference-whatsapp"
                             className="ml-[5px] text-[14px] font-medium text-[#313131]"
                         >
                             WhatsApp
@@ -287,7 +293,7 @@ export default function Form({selectValue, onSelectChange}) {
                             onChange={(e) => { inputHandler(e); }}
                         />
                         <label
-                            for="preference-phone"
+                            htmlFor="preference-phone"
                             className="ml-[5px] text-[14px] font-medium text-[#313131]"
                         >
                             Telefone
@@ -301,15 +307,15 @@ export default function Form({selectValue, onSelectChange}) {
                             onChange={(e) => { inputHandler(e); }}
                         />
                         <label
-                            for="preference-email"
+                            htmlFor="preference-email"
                             className="ml-[5px] text-[14px] font-medium text-[#313131]"
                         >
                             E-mail
                         </label>
                     </div>
                 </div>
-                <div className={`w-fit h-fit mx-auto mt-[15px] text-[16px] font-normal text-green-600 leading-[20px] transition transition-all ease-in-out duration-500
-                     ${success ? 'opacity-1 max-h-[40px]' : 'opacity-0 max-h-0'}}
+                <div className={`w-fit h-fit mx-auto mt-[15px] text-[16px] font-normal text-green-600 leading-[20px] transition transition-all ease-in-out duration-500 overflow-hidden
+                     ${success ? 'opacity-1 max-h-[40px]' : 'opacity-0 max-h-0'}
                 `}>
                     Formulário enviado com sucesso!<br/>Em breve entraremos em contato.
                 </div>
