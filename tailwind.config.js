@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       screens: {
         "xs": "440px",
-        "xxs": "400px"
+        "xxs": "400px",
+        "xxl": "1600px"
       },
       boxShadow: {
         'inner-custom-1': '-1px 26px 21px -18px rgba(0,0,0,0.05) inset',

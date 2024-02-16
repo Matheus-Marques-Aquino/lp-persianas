@@ -8,6 +8,8 @@ const patterns = {
 
 export default function Form({selectValue, onSelectChange}) {
     const [errors, setErrors] = useState([]);
+    const [success, setSuccess] = useState(false);
+
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -20,7 +22,7 @@ export default function Form({selectValue, onSelectChange}) {
         var mask = /(\d{2})(\d{5})(\d{4})/;
         var rawValue = value.replace(/\D/g, '');
 
-        if (rawValue.length > 0 && rawValue.length < 2) {
+        if (rawValue.length > 0 && rawValue.length < 3) {
             mask = /(\d{1,2})/;
             return rawValue.replace(mask, '($1');
         }
@@ -56,7 +58,7 @@ export default function Form({selectValue, onSelectChange}) {
         
         var errorList = [];
 
-        if (!patterns.email.test(email) && contact == 'email') {            
+        if ((!patterns.email.test(email) && contact == 'email') || email.length < 5) {            
             errorList.push('email');
         }
 
@@ -105,6 +107,11 @@ export default function Form({selectValue, onSelectChange}) {
         axios.post(url, data, { headers: headers })
             .then((response) => {
                 console.log('Success:', response);
+                setSuccess(true);
+
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 8000);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -171,7 +178,7 @@ export default function Form({selectValue, onSelectChange}) {
 
     return (
         <div className="bg-white w-full p-[20px] max-w-[425px] min-w-[350px] shadow-lg rounded-lg xs:p-[30px]">
-            <div className="text-[#313131]" >
+            <div className={`text-[#313131]`} >
                 <div className="w-fit mx-auto font-semibold text-[23px] leading-[30px] text-center xs:text-[25px]">
                     Solicite um orçamento e ganhe um desconto exclusivo!
                 </div>
@@ -301,14 +308,14 @@ export default function Form({selectValue, onSelectChange}) {
                         </label>
                     </div>
                 </div>
-                <div className={`w-fit mx-auto mt-[15px] text-[16px] font-normal text-green-600 leading-[20px]
-                    hidden
+                <div className={`w-fit h-fit mx-auto mt-[15px] text-[16px] font-normal text-green-600 leading-[20px] transition transition-all ease-in-out duration-500
+                     ${success ? 'opacity-1 max-h-[40px]' : 'opacity-0 max-h-0'}}
                 `}>
                     Formulário enviado com sucesso!<br/>Em breve entraremos em contato.
                 </div>
             </div>
             <div 
-                className="w-full text-white text-center py-[8px] mt-[25px] cursor-pointer bg-[#3EC263] rounded-md hover:opacity-85 transition ease-in-out duration-300"
+                className="w-full text-white text-center py-[8px] mt-[20px] cursor-pointer bg-[#3EC263] rounded-md hover:opacity-85 transition ease-in-out duration-300"
                 onClick={() => { sendForm(); }}
             >
                 Enviar

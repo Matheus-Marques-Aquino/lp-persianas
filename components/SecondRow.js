@@ -176,69 +176,72 @@ export default function SecondRow({updateSelect}) {
             <div className="w-fit mx-auto font-medium text-[21px] xs:text-[26px] sm:text-[30px] lg:text-[35px]">
                 Confira alguns dos nossos modelos
             </div>
-            <div         
-                className="w-full max-w-[1600px] pb-[20px] mx-auto gap-x-[15px] flex pt-[40px] px-[5px] overflow-hidden relative cursor-grab relative"
-                onMouseEnter={handleSlideBounce}
-                onTouchStart={handleSlideBounce}
-            >
-                <Swiper
-                    className=""
-                    ref={swiperRef}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    effect="slide"
-                    speed={1000}
-                    loop={true}
-                    centeredSlides={true}
-                    pagination={true}
-                    autoplay={{
-                        delay: 11000,
-                        disableOnInteraction: false,
-                    }}
-                    modules={[Pagination, Navigation, Autoplay]}
-                    breakpoints={{
-                        300: {
-                            slidesPerView: 1,
-                        },
-                        600: {
-                            slidesPerView: 2,
-                        },
-                        900: {
-                            slidesPerView: 3,
-                        },
-                        1200: {
-                            slidesPerView: 4,
-                        },
-                        1500: {
-                            slidesPerView: 5,
-                        },
-                    }}
+            <div className="w-fit mx-auto flex relative">
+                <div         
+                    className="w-full max-w-[1600px] pb-[20px] mx-auto gap-x-[15px] flex pt-[40px] px-[5px] overflow-hidden relative cursor-grab relative"
+                    onMouseEnter={handleSlideBounce}
+                    onTouchStart={handleSlideBounce}
                 >
-                    {CardArray.map((card, index) => {
-                        return(<SwiperSlide key={index}>
-                            <CustomCard 
-                                index={index}
-                                url={card.url}
-                                title={card.title}
-                                content={card.content}
-                                items={[...card.items]}
-                                buttonCallback={(index) => { updateSelect(card.value) } }
-                            />
-                        </SwiperSlide>)
-                    })}
-                </Swiper>
-                <div 
-                    className="w-[30px] h-[30px] bg-[#000000] rounded-full rounded-full flex opacity-60 absolute left-[5px] top-0 bottom-0 my-auto z-[200] cursor-pointer"
-                    onClick={() => {swiperRef.current.swiper.slidePrev()}}
-                >
-                    <FaAngleLeft className="m-auto text-white w-[16px] h-[16px] pr-[2px] opacity-100 cursor-pointer"/>
+                    <Swiper
+                        className=""
+                        ref={swiperRef}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        effect="slide"
+                        speed={1000}
+                        loop={true}
+                        centeredSlides={true}
+                        pagination={true}
+                        autoplay={{
+                            delay: 11000,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[Pagination, Navigation, Autoplay]}
+                        breakpoints={{
+                            300: {
+                                slidesPerView: 1,
+                            },
+                            600: {
+                                slidesPerView: 2,
+                            },
+                            900: {
+                                slidesPerView: 3,
+                            },
+                            1200: {
+                                slidesPerView: 4,
+                            },
+                            1500: {
+                                slidesPerView: 5,
+                            },
+                        }}
+                    >
+                        {CardArray.map((card, index) => {
+                            return(<SwiperSlide key={index}>
+                                <CustomCard 
+                                    index={index}
+                                    url={card.url}
+                                    title={card.title}
+                                    content={card.content}
+                                    items={[...card.items]}
+                                    buttonCallback={(index) => { updateSelect(card.value) } }
+                                />
+                            </SwiperSlide>)
+                        })}
+                    </Swiper>
+
                 </div>
                 <div 
-                    className="w-[30px] h-[30px] bg-[#000000] rounded-full rounded-full flex opacity-60 absolute right-[5px] top-0 bottom-0 my-auto z-[200] cursor-pointer"
-                    onClick={() => {swiperRef.current.swiper.slideNext()}}
-                >
-                    <FaAngleRight className="m-auto text-white w-[16px] h-[16px] pl-[2px] opacity-100 cursor-pointer"/>
-                </div>
+                        className="w-[30px] h-[30px] bg-[#000000] rounded-full rounded-full flex opacity-40 absolute left-[5px] top-0 bottom-0 my-auto z-[200] cursor-pointer xxl:-left-[14px]"
+                        onClick={() => {swiperRef.current.swiper.slidePrev()}}
+                    >
+                        <FaAngleLeft className="m-auto text-white w-[16px] h-[16px] pr-[2px] opacity-100 cursor-pointer"/>
+                    </div>
+                    <div 
+                        className="w-[30px] h-[30px] bg-[#000000] rounded-full rounded-full flex opacity-40 absolute right-[5px] top-0 bottom-0 my-auto z-[200] cursor-pointer xxl:-right-[14px]"
+                        onClick={() => {swiperRef.current.swiper.slideNext()}}
+                    >
+                        <FaAngleRight className="m-auto text-white w-[16px] h-[16px] pl-[2px] opacity-100 cursor-pointer"/>
+                    </div>
             </div>
         </div>
     );

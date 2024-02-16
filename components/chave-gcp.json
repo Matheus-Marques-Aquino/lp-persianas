@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "persianas-414502",
+  "private_key_id": "862965c5dd72dffe28883ca8b6ee4b8a11b037fe",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDCwyEJKA54KhlN\nUfpAO2C9u5d/ehjOF/32n5IurBEl2VHm+5R8ua1KeNV37eVmGqeXhedT2n+sYcL4\na7D8B7Zg6Erz3wmoxPA8eau+qxU4GdDJ0NwNx6E76AclxCMo0mNmBAUZ3Xyj9wA2\n7oNTBLLflyOOhF4L8QDOqEuiW29wZKOxUN8neNPC9s8Pc57+rsdq2OCoZy7jRnq+\nJm2v1iwixaCF9UOLVQgkmLql4nsIzL2Ft+MyJM8FfCz2f1FBgUJXuw55Jzi6vZ6Q\nqnc1jQ75ryM6E0GMWHIzUcf0qsuAW8zfZtyE4Cu9u7kEpKCdWswmgiqARykEOwqI\nbXWa/WIJAgMBAAECggEACemr06ca5m2RHFz66VxEUh/bSAEXRF0W/1+TjYXTORuQ\npjqhjgAW1HqmNcyRT5M1ero1YhCVzTisF2AG0esUEqZcE0HDwHfmmNNiBQo44iI5\nPN5hJt/lYlLO01KibfxYVAvKFS0PYBqNI56b50Su1H/BLuqojT/K2FnbQKQZ/czA\nolB4AmeWM7+/jmNVHrtn9TsDnK7/Sh4yttCRln5lZV4MvhBBsqvOiQDCwH5qKasY\ndD58LJHXRUqcffdnjDnAqApn0FCYWYl26WZODDQblV6Ij/zDSofdwtC9Xjyr/YeM\nqKn+0VfdHseaxdqPw/QeAgXUTW0kRiSUjgyknMwSAQKBgQD6GG5iIUKkXzxIsLj2\nsRlt5yjvErwbw66v810uHjNHiAyMSy2AewrIjrH6dV+doBLspRy3y183kXLOpBDg\nNpu75qkmIErJMtUQEepX9uS3I69v781gKIyYgo2UU/vbhKhz2TB9uXf683B6CCZs\nMUPOdkzKicU48V+agJbIAXJ6AQKBgQDHXEQE1CBwMi63STNSmag3BABPZJllaCOj\ndUv5u9ROt0vZhNT2LFmydkS1SoGRPZzJVvR9i6q7lNrnrxofwduuie5p4SlctUVM\nzOG44epyy4/Tyn4dYjX9E4LioeEkNqOvu3VVTMUMRrtepdHXLFTaKaxp5EPkNqvD\nLSHUfIcYCQKBgQCWVsFkM+I/tRAkEjfd86/5pQ+yR2zUs9j65CyLYJQq19nTLA36\nQfzFeyH6ETydIHC/2LFeut5OJR0CoxWR8sHDPnFH/fl24Ru7QUnB/ySWAtmfTGQE\n/dsmgrRhCetIloI8wb6olSlOrbBbazLNrv+3yN14k0D/bfmugsYhDN2oAQKBgA8O\nwvxyYTjYMXsahkvY20G8haF5gbSNFxQDigeEzlZbtdjqFYO6edPm5u2igQLNWohC\njxjkcbLVXWteaGS5qbQXKvDIVu1vq5pPZ0UlmyWshmKCyt/BST6iOKKRg4XOsrJV\nQFl/AOsadJCDicPsz0PjHeipmw8jqfmF8SYxeaqxAoGBANX3YfcTq6RZODgEWLlR\nPA41Cehzor6+28zSJClE06sl6g7mAQSOi4c8ncDarV5t0ZkG6qnvrcoWKzCodM7w\nYkntjwNYujIw27SEXnUINKmzW/83qd159a7QXh/c+TavfOj8lbIfqYmSNdWYC1xf\nEJq+2M1H/YwkYo1YBZPF9UUO\n-----END PRIVATE KEY-----\n",
+  "client_email": "persianas-integracao@persianas-414502.iam.gserviceaccount.com",
+  "client_id": "118107683017088528868",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/persianas-integracao%40persianas-414502.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

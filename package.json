@@ -12,6 +12,8 @@
     "axios": "^1.6.7",
     "dotenv": "^16.4.1",
     "google-maps-react": "^2.0.6",
+    "googleapis": "^133.0.0",
+    "luxon": "^3.4.4",
     "next": "14.1.0",
     "prop-types": "^15.8.1",
     "react": "^18",
